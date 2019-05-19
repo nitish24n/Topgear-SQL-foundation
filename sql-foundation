@@ -1,0 +1,173 @@
+1. Write a SQL statement to Create below table.
+Salesman_id		Name			City		Commision
+5001			James Hoog		New York	0.15
+5002			Nail Knite		Paris		0.13
+5005			Pit Alex		London		0.11
+5006			Mc Lyon			Paris		0.14
+5003			Lauson Hen		Sydney		0.12
+5007			Paul Adam		Rome		0.13
+
+create table salesman(salesman_id int,name varchar(20),city varchar(20),commision float);
+insert into salesman values(5001,"James Hoog","New York",0.15);
+insert into salesman values(5002,"Nail Knite","Paris",0.13);
+insert into salesman values(5005,"Pit Alex","London",0.11);
+insert into salesman values(5006,"Mc Lyon","Paris",0.14);
+insert into salesman values(5003,"Lauson Hen","Sydney",0.12);
+insert into salesman values(5007,"Paul Adam","Rome",0.13);
+
+2. Write a SQL statement to display specific columns like Salesman_id and Name from above table.
+
+select salesman_id,name from salesman;
+
+3. Write a query to display Name column in accending order from above table.
+
+select name from salesman order by name  asc;
+
+4. Write a SQL statement for above table to diplay names and city of Salesman, who belongs to the city of Paris.
+
+select name,city from salesman where city="Paris";
+
+5. Write a query on above table to filter those salesmen with all information who comes from any of the cities Paris and Rome.
+
+select * from salesman where city in ("Paris","Rome");
+
+6. Write a SQL statement to find those salesmen with all the other information and name started with any letter wining ‘A’ and ‘K’ from above table.
+
+
+7. Write a SQL statement to display all the information for those customers with a Grade of 200.
+Customer_id	Cust_name		City		Grade		Salesman_id
+3002		Nick Rimando		New York	100		5001
+3005		Graham Zusi		California	200		5002
+3001		Brad Guzan		London				5005
+3004		Fabian Johns		Paris		300		5006
+3007		Brad Davis		New York	200		5001
+3009		Geoff Camero		Berlin		100		5003
+3008		Julian Green		London		300		5002
+3003		Jozy Altidon		Moscow		200		5007
+
+create table customer(Customer_id int,Cust_name	varchar(20),City varchar(20),Grade int,Salesman_id int);
+
+insert into customer values(3002,"Nick Rimando","New York",100,5001);
+insert into customer values(3005,"Graham Zusi","California",200,5002);
+insert into customer(Customer_id,Cust_name,City,Salesman_id) values(3001,"Brad Guzan","London",5005);
+insert into customer values(3004,"Fabian Johns","Paris",300,5006);
+insert into customer values(3007,"Brad Davis","New York",200,5001);
+insert into customer values(3009,"Geoff Camero","Berlin",100,5003);
+insert into customer values(3008,"Julian Green","London",300,5002);
+insert into customer values(3003,"Jozy Altidon","Moscow",200,5007);
+
+select * from customer where grade = 200;		//solution query
+
+
+8. Write a SLQ query to calculate the average price of all products of the manufacturer which code is 16.
+Pro_Id	Pro_Name		Pro_Price	Pro_com
+101		Mother Board	3200		15
+102		Key Board	450		16
+103		Zip drive	250		14
+104		Speaker		550		16
+105		Monitor		5000		11
+106		DVD drive	900		12
+107		CD drive	800		12
+108		Printer		2600		13
+109		Refill cartridge350		13
+
+create table product(Pro_Id int,Pro_Name varchar(20),Pro_Price int,Pro_com int);
+
+insert into product values(101,"Mother Board",3200,15);
+insert into product values(102,"Key Board",450,16);
+insert into product values(103,"Zip drive",250,14);
+insert into product values(104,"Speaker",550,16);
+insert into product values(105,"Monitor",5000,11);
+insert into product values(106,"DVD drive",900,12);
+insert into product values(107,"CD drive",800,12);
+insert into product values(108,"Printer",2600,13);
+insert into product values(109,"Refill cartridge",350,13);
+
+select avg(Pro_Price) as AvgPriceOfProcom_16 from product where pro_com=16;		//solution query
+
+9. Write a SQL query to find the name and price of the cheapest item from above table.
+
+select Pro_Name,Pro_Price from product order by pro_price asc limit 1;
+
+10. Write a query in SQL to find the last name of all employees, without duplicates.
+Emp_IDNO	EMP_Fname	EMP_Lname	EMP_Dept
+127323		Michale		Robbin		57
+526689		Carlos		Snares		63
+843795		Enric		Dasio		57
+328717		Jhon		Snares		63
+444527		Joseph		Dosni		47
+659831		Zanifer		Emily		47
+847674		Kuleswar	Sitaraman	57
+748681		Hanrey		Gabriel		47
+555935		Alex		Manuel		57
+539569		George		Mardy		27
+733843		Mario		Saule		63
+631548		Alan		Snappy		27
+839139		Maria		Foster		57
+
+create table employees(Emp_IDNO int,EMP_Fname varchar(20),EMP_Lname varchar(20),EMP_Dept int);
+
+insert into employees values(127323,"Michale","Robbin",57);
+insert into employees values(526689,"Carlos","Snares"63);
+insert into employees values(843795,"Enric","Dasio",57);
+insert into employees values(328717,"Jhon","Snares",63);
+...
+
+select DISTINCT EMP_Lname from employees;		//solution query
+
+11. Write a query to display all customers with a grade above 100
+Customer_id	Cust_name		City		Grade		Salesman_id
+3002		Nick Rimando		New York	100		5001
+3005		Graham Zusi		California	200		5002
+3001		Brad Guzan		London				5005
+3004		Fabian Johns		Paris		300		5006
+3007		Brad Davis		New York	200		5001
+3009		Geoff Camero		Berlin		100		5003
+3008		Julian Green		London		300		5002
+3003		Jozy Altidon		Moscow		200		5007
+
+create table customers(Customer_id int,Cust_name varchar(20),City varchar(20),Grade int,Salesman_id int);
+
+insert into customers values(3002,"Nick Rimando","New York",100,5001);
+insert into customers values(3005,"Graham Zusi","California",200,5002);
+insert into customers(Customer_id,Cust_name,City,Salesman_id) values(3001,"Brad Guzan","London",5005);
+insert into customers values(3004,"Fabian Johns","Paris",300,5006);
+...
+
+select * from customers where grade > 100;		//solution query	
+
+12. Write a SQL statement to display all customers, who are either belongs to the city New York or had a grade above 100 from above table.
+
+select * from customers where City="New York" OR Grade > 100;
+
+13. Write a SQL query to display those customers who are neither belongs to the city New York nor grade values is more than 100 from above table.
+
+select * from customers where city <> "New York" AND Grade <= 100;
+
+14. Write a SQL statement to display either those orders which are not issued on date 2012-09-10 and issued by the salesman whose ID is 505 and below or those orders which purchase amount is 1000.00 and below.
+ord_no		purch_amt	ord_date	custmoer_id	salesman_id
+70001		150.5		2012-10-05	3005		5002
+70009		270.65		2012-09-10	3001		5005
+70002		65.26		2012-10-05	3002		5001
+70004		110.5		2012-08-17	3009		5003
+70007		948.5		2012-09-10	3005		5002
+70005		2400.6		2012-07-27	3007		5001
+70008		5760		2012-09-10	3002		5001
+70010		1983.43		2012-10-10	3004		5006
+70003		2480.4		2012-10-10	3009		5003
+70012		250.45		2012-06-27	3008		5002
+70011		75.29		2012-08-17	3003		5007
+70013		3045.6		2012-04-25	3002		5001
+
+15. Write a SQL statement for above table where i) order dates are anything but not 2012-08-17 or customer_id is not greater than 3005. Ii) and purchase amount is not below 1000.
+
+create table orders(ord_no int,purch_amt float,ord_date date,custmoer_id int,salesman_id int);
+
+insert into orders values(70001,150.5,"2012-10-05",3005,5002);
+insert into orders values(70009,270.65,"2012-09-10",3001,5005);
+insert into orders values(70002,65.26	,"2012-10-05",3002,5001);
+insert into orders values(70004,110.5,"2012-08-17",3009,5003);
+insert into orders values(70007,948.5,"2012-09-10",3005,5002);
+insert into orders values(70005,2400.6,"2012-07-27",3007,5001);
+
+select * from orders where ord_date <> "2012-08-17" OR custmoer_id <= 3005 AND purch_amt >= 1000;	//solution query
